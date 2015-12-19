@@ -12,14 +12,14 @@ class TCPServer
 		
 		String filename = "computation_time.txt";
 		FileWriter fw = new FileWriter(filename,true);
-	
-		Socket connectionSocket = socket.accept();
-		System.out.println("-> Connected to client");
-		ObjectOutputStream outputStream = new ObjectOutputStream(connectionSocket.getOutputStream());
-		ObjectInputStream inputStream = new ObjectInputStream(connectionSocket.getInputStream());
 
 		while(true)
 		{					
+			Socket connectionSocket = socket.accept();
+			System.out.println("--> Connected to client");		
+			ObjectOutputStream outputStream = new ObjectOutputStream(connectionSocket.getOutputStream());
+			ObjectInputStream inputStream = new ObjectInputStream(connectionSocket.getInputStream());
+	
 			double tab[][] = (double[][]) inputStream.readObject();
 			System.out.println("Matrix retreived");
 			long start_time_computation = System.nanoTime();
@@ -27,13 +27,13 @@ class TCPServer
 			System.out.println("Matrix computed");
 			long end_time_computation = System.nanoTime();
 			double difference_time_computation = (end_time_computation - start_time_computation)/1e6;
-			System.out.println("computation time="+difference_time_computation);
-			fw.write(String.valueOf(difference_time_computation)+"\n");
-			fw.flush();
+		//	System.out.println("computation time="+difference_time_computation);
+		//	fw.write(String.valueOf(difference_time_computation)+"\n");
+		//	fw.flush();
 			//print(computedTab);
-			System.out.println("Sending new matrix");
+		//	System.out.println("Sending new matrix");
 			outputStream.writeObject(computedTab);  
-			System.out.println("-------------------------------");
+		//	System.out.println("-------------------------------");
 		}
 	}
 

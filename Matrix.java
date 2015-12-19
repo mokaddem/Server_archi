@@ -13,9 +13,9 @@ class Matrix
     }
     
     public int compareTo(Matrix otherMatrix) {
-		// Return > 0 if current matrix is smaller.
-		return otherMatrix.size - this.size;
-		
-	}	
+	// Return > 0 if current matrix is smaller.
+	return otherMatrix.size - this.size;
+	
+    }	
 }
 
