@@ -1,14 +1,22 @@
 import java.io.*;
 import java.net.*;
+<<<<<<< HEAD
 import java.lang.*;
 
 class TCPServer
 {
 	static int EXPONENT = 1;
+=======
+
+class TCPServer
+{
+	static int EXPONENT = 10;
+>>>>>>> 07d41cefdcddfb2592463c7480c153c7150d79cd
 	public static void main(String argv[]) throws Exception
 	{
 		
 		ServerSocket socket = new ServerSocket(6789, 1);
+<<<<<<< HEAD
 		
 		String filename = "computation_time.txt";
 		FileWriter fw = new FileWriter(filename,true);
@@ -30,6 +38,20 @@ class TCPServer
 			System.out.println("computation time="+difference_time_computation);
 			fw.write(String.valueOf(difference_time_computation)+"\n");
 			fw.flush();
+=======
+
+		while(true)
+		{		
+			Socket connectionSocket = socket.accept();
+			System.out.println("-> Connected to client");
+			ObjectOutputStream outputStream = new ObjectOutputStream(connectionSocket.getOutputStream());
+			ObjectInputStream inputStream = new ObjectInputStream(connectionSocket.getInputStream());
+			
+			double tab[][] = (double[][]) inputStream.readObject();
+			System.out.println("Matrix retreived");
+			double computedTab[][] = computationFunction(tab);
+			System.out.println("Matrix computed:");
+>>>>>>> 07d41cefdcddfb2592463c7480c153c7150d79cd
 			//print(computedTab);
 			System.out.println("Sending new matrix");
 			outputStream.writeObject(computedTab);  
