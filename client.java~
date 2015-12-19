@@ -21,7 +21,7 @@ class TCPClient
 			double lambda = 500;
 			double prob = Math.random();
 			double ExpoNumber = (-1/lambda) * Math.log(1-prob);
-			Thread.sleep((int) ExpoNumber);
+			Thread.sleep((int) ExpoNumber*1000);
 
 			Socket socket = new Socket("192.168.0.7", 6789);
 			ClientHandleThread clieThread = new ClientHandleThread(socket);
