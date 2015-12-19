@@ -1,6 +1,7 @@
 import java.io.*;
 import java.net.*;
 import java.lang.*;
+import java.util.PriorityQueue;
 
 class TCPServer
 {
@@ -12,31 +13,39 @@ class TCPServer
 		
 		String filename = "computation_time.txt";
 		FileWriter fw = new FileWriter(filename,true);
+//		PriorityQueue<Matrix> queue = new PriorityQueue<Matrix>();
+		ServerJob sj = new ServerJob();
 
 		while(true)
 		{					
 			Socket connectionSocket = socket.accept();
-			ClientServiceThread clieThread = new ClientServiceThread(connectionSocket);
-            clieThread.start(); 
-/*			System.out.println("--> Connected to client");		
+//			ClientServiceThread clieThread = new ClientServiceThread(connectionSocket);
+//          clieThread.start(); 
+			System.out.println("--> Connected to client");		
 			ObjectOutputStream outputStream = new ObjectOutputStream(connectionSocket.getOutputStream());
 			ObjectInputStream inputStream = new ObjectInputStream(connectionSocket.getInputStream());
 	
 			double tab[][] = (double[][]) inputStream.readObject();
-			System.out.println("Matrix retreived");
-			long start_time_computation = System.nanoTime();
-			double computedTab[][] = computationFunction(tab);
-			System.out.println("Matrix computed");
-			long end_time_computation = System.nanoTime();
-			double difference_time_computation = (end_time_computation - start_time_computation)/1e6;
+			ClientServiceThread clieThread = new ClientServiceThread(connectionSocket, tab);
+			Matrix request = new Matrix(tab, clieThread);
+			sj.addR(request);
+						
+//			queue.poll().thread.start(); 
+
+//			System.out.println("Matrix retreived");
+//			long start_time_computation = System.nanoTime();
+//			double computedTab[][] = computationFunction(tab);
+//			System.out.println("Matrix computed");
+//			long end_time_computation = System.nanoTime();
+//			double difference_time_computation = (end_time_computation - start_time_computation)/1e6;
 		//	System.out.println("computation time="+difference_time_computation);
 		//	fw.write(String.valueOf(difference_time_computation)+"\n");
 		//	fw.flush();
 			//print(computedTab);
 		//	System.out.println("Sending new matrix");
-			outputStream.writeObject(computedTab);  
+		//	outputStream.writeObject(computedTab);  
 		//	System.out.println("-------------------------------");
-*/		}
+		}
 	}
 
 	public static double[][] computationFunction(double array[][]){

@@ -8,16 +8,17 @@ import java.lang.*;
 class ClientServiceThread extends Thread 
 { 
         Socket myClientSocket;
+	double tab[][];
 
         public ClientServiceThread() 
         { 
             super(); 
         } 
 
-        ClientServiceThread(Socket s) 
+        ClientServiceThread(Socket s, double tab[][]) 
         { 
             myClientSocket = s; 
-
+	    this.tab = tab;
         } 
 
         public void run() 
@@ -26,7 +27,7 @@ class ClientServiceThread extends Thread
             // A good practice is to encapsulate them with a BufferedReader 
             // and a PrintWriter as shown below. 
             ObjectOutputStream outputStream = null;
-			ObjectInputStream inputStream = null;
+	    ObjectInputStream inputStream = null;
 
             // Print out details of this connection 
             System.out.println("Accepted Client Address - " + myClientSocket.getInetAddress().getHostName()); 
@@ -36,7 +37,7 @@ class ClientServiceThread extends Thread
 				outputStream = new ObjectOutputStream(myClientSocket.getOutputStream());
 				inputStream = new ObjectInputStream(myClientSocket.getInputStream());
 
-				double tab[][] = (double[][]) inputStream.readObject();
+			//	double tab[][] = (double[][]) inputStream.readObject();
 			//	System.out.println("Matrix retreived");
 			//	long start_time_computation = System.nanoTime();
 				double computedTab[][] = computationFunction(tab);

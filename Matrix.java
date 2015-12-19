@@ -1,15 +1,18 @@
 import java.io.*;
 import java.net.*;
 import java.util.Random;
+import java.util.Comparator;
 
-class Matrix
+class Matrix implements Comparator<Matrix>
 {
 	int size;
-	int[][] matrix;
+	double[][] matrix;
+	ClientServiceThread thread;
 
-    public Matrix(int[][] matrix){
+    public Matrix(double[][] matrix, ClientServiceThread thread){
     	this.size = matrix.length;
     	this.matrix = matrix;
+	this.thread = thread;
     }
     
     public int compareTo(Matrix otherMatrix) {
@@ -17,5 +20,12 @@ class Matrix
 	return otherMatrix.size - this.size;
 	
     }	
+	
+    public int compare(Matrix matrix, Matrix otherMatrix)
+    {
+        // Return > 0 if current matrix is smaller.
+	return otherMatrix.size - this.size;
+    }
+
 }
 
