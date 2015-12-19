@@ -30,6 +30,9 @@ class ClientHandleThread extends Thread
 
             try 
             {                                
+		outputStream = new ObjectOutputStream(myClientSocket.getOutputStream());
+		inputStream = new ObjectInputStream(myClientSocket.getInputStream());
+
 		double tab[][] = create_tab((int) (75*Math.random())+1);
 		//print(tab);
 
