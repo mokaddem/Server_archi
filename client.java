@@ -16,18 +16,20 @@ class TCPClient
 		int k=0; 
 		//double difference_time_total=0;
 		
-		for(int iter=1; iter<1000; iter=iter+50){ k++;
+		for(int iter=1; iter<500; iter=iter+1){ k++;
 			Socket socket = new Socket("192.168.0.7", 6789);
 			ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
 			ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());			
 	
-			double tab[][] = create_tab((int) (800*Math.random())+1); //random difficulty
+//			double tab[][] = create_tab((int) (800*Math.random())+1); //random difficulty
+			double tab[][] = create_tab((int) (75*Math.random())+1);
 			//print(tab);
 
 			double lambda = 500;
 			double prob = Math.random();
 			double ExpoNumber = (-1/lambda) * Math.log(1-prob);
-			Thread.sleep((int) ExpoNumber);
+			System.out.println(ExpoNumber);
+//			Thread.sleep((int) ExpoNumber);
 			long start_time_total = System.nanoTime();
 			outputStream.writeObject(tab);
 //			System.out.println("Sending matrix");
