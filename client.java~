@@ -21,6 +21,7 @@ class TCPClient
 			
 			ClientHandleThread clieThread = new ClientHandleThread(socket);
             clieThread.start(); 
+			System.out.println("Thread n°"+iter);
 
 /*			ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
 			ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());			
