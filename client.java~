@@ -17,8 +17,13 @@ class TCPClient
 		//double difference_time_total=0;
 		
 		for(int iter=1; iter<500; iter=iter+1){ k++;
-			Socket socket = new Socket("192.168.0.7", 6789);
 			
+			double lambda = 500;
+			double prob = Math.random();
+			double ExpoNumber = (-1/lambda) * Math.log(1-prob);
+			Thread.sleep((int) ExpoNumber);
+
+			Socket socket = new Socket("192.168.0.7", 6789);
 			ClientHandleThread clieThread = new ClientHandleThread(socket);
             clieThread.start(); 
 			System.out.println("Thread n°"+iter);
