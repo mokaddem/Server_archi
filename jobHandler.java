@@ -46,6 +46,7 @@ class ClientHandleThread extends Thread
 //		System.out.println("Sending matrix");
 
 		double receivedTab[][] = (double[][]) inputStream.readObject();
+		System.out.println("New matrix received");		
 //		1	System.out.println("Received matrix");
 //		long end_time_total = System.nanoTime();
 //			difference_time_total += (end_time_total - start_time_total)/1e6;
