@@ -18,7 +18,11 @@ class TCPClient
 		
 		for(int iter=1; iter<500; iter=iter+1){ k++;
 			Socket socket = new Socket("192.168.0.7", 6789);
-			ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
+			
+			ClientHandleThread clieThread = new ClientHandleThread(socket);
+            clieThread.start(); 
+
+/*			ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
 			ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());			
 	
 //			double tab[][] = create_tab((int) (800*Math.random())+1); //random difficulty
@@ -44,7 +48,7 @@ class TCPClient
 //			fw.flush();
 			fw.close();
 			socket.close();
-		}
+*/		}
 		//print(receivedTab);
 //		System.out.println("Avg time="+ difference_time_total/k);
     }
