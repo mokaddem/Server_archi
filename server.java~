@@ -16,7 +16,9 @@ class TCPServer
 		while(true)
 		{					
 			Socket connectionSocket = socket.accept();
-			System.out.println("--> Connected to client");		
+			ClientServiceThread clieThread = new ClientServiceThread(connectionSocket);
+            clieThread.start(); 
+/*			System.out.println("--> Connected to client");		
 			ObjectOutputStream outputStream = new ObjectOutputStream(connectionSocket.getOutputStream());
 			ObjectInputStream inputStream = new ObjectInputStream(connectionSocket.getInputStream());
 	
@@ -34,7 +36,7 @@ class TCPServer
 		//	System.out.println("Sending new matrix");
 			outputStream.writeObject(computedTab);  
 		//	System.out.println("-------------------------------");
-		}
+*/		}
 	}
 
 	public static double[][] computationFunction(double array[][]){
@@ -74,3 +76,8 @@ class TCPServer
 		}
     }
 }
+
+
+
+
+
