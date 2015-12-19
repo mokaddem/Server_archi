@@ -12,14 +12,13 @@ class TCPServer
 		
 		String filename = "computation_time.txt";
 		FileWriter fw = new FileWriter(filename,true);
-	
-		ObjectOutputStream outputStream = new ObjectOutputStream(connectionSocket.getOutputStream());
-		ObjectInputStream inputStream = new ObjectInputStream(connectionSocket.getInputStream());
 
 		while(true)
 		{					
 			Socket connectionSocket = socket.accept();
-			System.out.println("--> Connected to client");	
+			System.out.println("--> Connected to client");		
+			ObjectOutputStream outputStream = new ObjectOutputStream(connectionSocket.getOutputStream());
+			ObjectInputStream inputStream = new ObjectInputStream(connectionSocket.getInputStream());
 	
 			double tab[][] = (double[][]) inputStream.readObject();
 			System.out.println("Matrix retreived");

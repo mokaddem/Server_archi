@@ -17,7 +17,7 @@ class TCPClient
 		//double difference_time_total=0;
 		
 		for(int iter=1; iter<1000; iter=iter+50){ k++;
-			Socket socket = new Socket("192.168.0.19", 6789);
+			Socket socket = new Socket("192.168.0.7", 6789);
 			ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
 			ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());			
 	

@@ -8,7 +8,7 @@ class TCPServer
 	public static void main(String argv[]) throws Exception
 	{
 		
-		ServerSocket socket = new ServerSocket(6789, 1);
+		ServerSocket socket = new ServerSocket(6789, 10);
 		
 		String filename = "computation_time.txt";
 		FileWriter fw = new FileWriter(filename,true);
